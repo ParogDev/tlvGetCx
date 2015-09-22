@@ -2,6 +2,12 @@ var boldOpen = "!!";
 var boldClose = "!!";
 var url = window.location.href;
 
+//Resize textarea CSS height to see full content
+$('#form_text').height(260);
+//Overwrite form button to prevent accidental submit and to swap to plain text with no bold delimiters
+$('#form_.btn.btn-success').replaceWith('<input class="btn btn-success" name value="Switch tolain text" onclick="swapSyntax()">');
+
+
 $('#main-content > section > div:nth-child(3) > div:nth-child(1) > section > div > form > div:nth-child(1) > label').replaceWith('<label>' + boldOpen + 'Status: ' + boldClose + '</label>');
 var status = 				document.getElementsByClassName('form-group')[0].innerText.replace(/(\r\n|\n|\r)/gm," ");
 
@@ -32,4 +38,14 @@ var phone1 = 				document.getElementsByClassName('form-group')[17].innerText.rep
 $('#main-content > section > div:nth-child(3) > div:nth-child(1) > section > div > form > div:nth-child(19) > label').replaceWith('<label>' + boldOpen + '# de Téléphone 2: ' + boldClose + '</label>');
 var phone2 = 				document.getElementsByClassName('form-group')[18].innerText.replace(/(\r\n|\n|\r)/gm," ");
 
-copy(url +"\r"+ prenom +"\t\t"+ nom +"\r"+ phone1 +"\r"+ phone2 +"\r\r"+ om +"\r"+ status +"\r"+ rep +"\r"+ gestionaireEquipe +"\r"+ dateVendu +"\r"+ dateInstall +"\r");
+
+var textBold = url +"\r"+ prenom +"\t\t"+ nom +"\r"+ phone1 +"\r"+ phone2 +"\r\r"+ om +"\r"+ status +"\r"+ rep +"\r"+ gestionaireEquipe +"\r"+ dateVendu +"\r"+ dateInstall +"\r";
+var textNormal = textBold.replace(/!/g, "");
+
+//Set Text
+$('#form_text').val(textBold);
+
+//Swap text for normal text.
+function swapSyntax() {
+	$('#form_text').val( $('#form_text').val() == textNormal ? textBold : textNormal );
+}
