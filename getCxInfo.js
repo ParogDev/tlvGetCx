@@ -5,7 +5,7 @@ var url = window.location.href;
 //Resize textarea CSS height to see full content
 $('#form_text').height(260);
 //Overwrite form button to prevent accidental submit and to swap to plain text with no bold delimiters
-$('#form_.btn.btn-success').replaceWith('<input class="btn btn-success" name value="Switch tolain text" onclick="swapSyntax()">');
+$('#form_.btn.btn-success').replaceWith('<input class="btn btn-success" name value="Switch to plain text" onclick="swapSyntax()">');
 
 
 $('#main-content > section > div:nth-child(3) > div:nth-child(1) > section > div > form > div:nth-child(1) > label').replaceWith('<label>' + boldOpen + 'Status: ' + boldClose + '</label>');
